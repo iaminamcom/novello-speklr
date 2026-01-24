@@ -1,6 +1,7 @@
 type MenuItem = {
   name: string;
   url?: string;
+  active: boolean;
   children?: MenuItem[]
 }
 
@@ -8,26 +9,32 @@ const menuData: MenuItem[] = [
   {
     name: 'Summary',
     url: '#',
+    active: true
   },
   {
     name: 'Exterior',
-    children: []
+    children: [],
+    active: false
   },
   {
     name: 'Interior',
-    children: []
+    children: [],
+    active: false
   },
   {
     name: 'Services',
-    children: []
+    children: [],
+    active: false
   },
   {
     name: 'Scout: Location Intelligence',
-    children: []
+    children: [],
+    active: false
   },
   {
     name: 'Legal matters',
     url: '#',
+    active: false
   },
 ]
 
@@ -67,7 +74,7 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <div className="">
+      <div className="flex flex-col items-center">
         <div className="text-xs py-1 px-3">Powered by </div>
         <img src="" alt="speklr logo" width={145} />
       </div>
@@ -76,13 +83,16 @@ export default function Sidebar() {
 }
 
 function NavItem({ item }: { item: MenuItem }) {
-  const styleClasses = 'bg-surface-elevated rounded py-4 px-5 flex items-center justify-between cursor-pointer font-semibold hover:bg-surface-elevated/50'
+  const styleClasses = `rounded py-4 px-5 flex items-center justify-between cursor-pointer font-semibold
+                        hover:bg-surface-elevated ${item.active ? 'bg-surface-elevated' : ''}`
 
   if (item.children && item.children.length) {
     return (
-      <button className={styleClasses}>
-        {item.name}
-      </button>
+      <div className="">
+        <button className={styleClasses}>
+          {item.name}
+        </button>
+      </div>
     )
   }
 
