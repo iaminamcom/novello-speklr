@@ -1,4 +1,5 @@
 import AppLayout from "@/components/layout/AppLayout";
+import { ScoreSlider } from "@/components/ScoreSlider";
 
 const data = {
   addressAndDates: {
@@ -11,7 +12,11 @@ const data = {
   propertyImageUrl: '',
   propertyInfo: [
     { name: '', icon: '', valueText: '', },
-  ]
+  ],
+  scoreInfo: {
+    score: 6,
+
+  }
 }
 
 export default function Home() {
@@ -33,7 +38,15 @@ export default function Home() {
 
       {data.propertyImageUrl && <img src={data.propertyImageUrl} alt="property" className="lg:col-span-6 lg:row-span-2" />}
 
-
+      <div className="py-4 px-3 rounded-2xl bg-surface space-y-2.5 col-span-full">
+        <ScoreSlider score={data.scoreInfo.score} />
+        <div className="space-y-4 mt-12">
+          <h2 className="text-2xl font-semibold p-2">Your smart score is {data.scoreInfo.score}/10</h2>
+          <p className="p-2 font-myriad">
+            <b>Summary:</b> This report provides a comprehensive overview of the recent land assessment conducted in the Green Valley region. The survey highlights key findings regarding soil quality, vegetation health, and water resources, offering valuable insights for future development projects. The data collected indicates a diverse ecosystem with potential for sustainable growth, while also addressing environmental concerns that need to be managed carefully.
+          </p>
+        </div>
+      </div>
 
     </AppLayout>
   );

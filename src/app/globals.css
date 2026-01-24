@@ -8,6 +8,10 @@
 
   --surface: #222D31;
   --surface-elevated: #2A383D;
+
+  --my-red: #BE0101;
+  --my-amber: #D47C2F;
+  --my-green: #60B934;
 }
 
 @theme inline {
@@ -16,8 +20,12 @@
   --color-primary: var(--primary);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
+  --color-my-red: var(--my-red);
+  --color-my-amber: var(--my-amber);
+  --color-my-green: var(--my-green);
 
   --font-sans: var(--font-open-sauce), ui-sans-serif, system-ui, sans-serif;
+  --font-myriad: var(--font-myriad), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {

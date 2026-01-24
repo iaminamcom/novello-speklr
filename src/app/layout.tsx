@@ -29,6 +29,28 @@ const openSauce = localFont({
   display: "swap",
 });
 
+const myriadPro = localFont({
+  src: [
+    {
+      path: "../../public/fonts/MyriadPro-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/MyriadPro-Semibold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/MyriadPro-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-myriad",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Speklr.",
   description: "Spekler Builder",
@@ -41,7 +63,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-GB">
-      <body className={`${openSauce.variable} font-sans antialiased`}>
+      <body className={`${openSauce.variable} ${myriadPro.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
