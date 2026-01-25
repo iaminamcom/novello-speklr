@@ -5,20 +5,20 @@ type AttrbuteCardProps = {
     tags?: string[];
     name: string;
     valueText?: string;
-    smallText: boolean;
+    smallText?: boolean;
 };
 
-export function AttrbuteCard({ icon, tags, name, valueText, smallText = true }: AttrbuteCardProps) {
+export function AttrbuteCard({ icon, tags, name, valueText, smallText = false }: AttrbuteCardProps) {
     return (
-        <div className="bg-surface rounded-2xl p-5 flex flex-col items-center gap-4 text-center">
-            {icon}
+        <div className={`bg-surface rounded-2xl p-5 flex flex-col items-center gap-4 text-center ${tags?.length ? 'lg:col-span-3' : 'lg:col-span-2'}`}>
+            <div className="*:size-15">{icon}</div>
             <div className="flex flex-col items-center gap-3">
                 <span className="text-xs">{name}</span>
                 {valueText && (
                     <span className={`font-semibold ${smallText ? 'text-sm' : 'text-2xl'}`}>{valueText}</span>
                 )}
                 {tags?.length && (
-                    <div className="">
+                    <div className="flex flex-wrap gap-1 justify-center">
                         {tags.map(tag => (
                             <span className="rounded-full py-1 px-2 bg-background text-primary text-sm font-semibold">{tag}</span>
                         ))}

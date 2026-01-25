@@ -1,5 +1,9 @@
+import { AttrbuteCard } from "@/components/AttrbuteCard";
+import { ConditionRating, KeyOverviewCard, Summary, WhenToAct } from "@/components/KeyOverviewCard";
 import AppLayout from "@/components/layout/AppLayout";
 import { ScoreSlider } from "@/components/ScoreSlider";
+import { AlarmClock, Bed, CalendarDays, CarFront, Clock, CookingPot, DoorClosed, DoorOpen, Droplets, Hospital, House, HousePlug, Info, Luggage, MapPin, Shield, Star, TentTree, ThumbsUp, Toilet, TriangleAlert, Utensils, Warehouse, WashingMachine } from "lucide-react";
+import Image from "next/image";
 
 const data = {
   addressAndDates: {
@@ -9,14 +13,164 @@ const data = {
       { date: '19.02.2025', text: 'Report published' },
     ]
   },
-  propertyImageUrl: '',
   propertyInfo: [
-    { name: '', icon: '', valueText: '', },
+    {
+      name: 'Property type',
+      icon: <House />,
+      valueText: 'End-of-terrace house',
+      smallText: true,
+    },
+    {
+      name: 'Approximate age',
+      icon: <CalendarDays />,
+      valueText: '1800’s',
+    },
+    {
+      name: 'Tenure',
+      icon: <HousePlug />,
+      valueText: 'Freehold',
+      smallText: true,
+    },
+    {
+      name: 'Bathrooms',
+      icon: <Toilet />,
+      valueText: '4',
+    },
+    {
+      name: 'Living rooms',
+      icon: <Warehouse />,
+      valueText: '2',
+    },
+    {
+      name: 'Bedrooms',
+      icon: <Bed />,
+      valueText: '5',
+    },
+    {
+      name: 'Kitchens',
+      icon: <CookingPot />,
+      valueText: '1',
+    },
+    {
+      name: 'Dining rooms',
+      icon: <Utensils />,
+      valueText: '2',
+    },
+    {
+      name: 'En-suites',
+      icon: <Luggage />,
+      valueText: '5',
+    },
+    {
+      name: 'WCs',
+      icon: <Toilet />,
+      valueText: '4',
+    },
+    {
+      name: 'Utility rooms',
+      icon: <WashingMachine />,
+      valueText: '2',
+    },
+    {
+      name: 'Conservatory',
+      icon: <DoorOpen />,
+      valueText: '5',
+    },
+    {
+      name: 'Other rooms',
+      icon: <DoorClosed />,
+      tags: ['Study', 'Snug', 'tag 3', 'tag 4']
+    },
+    {
+      name: 'Outside areas',
+      icon: <TentTree />,
+      tags: ['Garden', 'Balcony/Terrace', 'Patio/Courtyard', 'Shared outdoor space']
+    },
+    {
+      name: 'Outbuildings',
+      icon: <Hospital />,
+      tags: ['Garage (detached)', 'Shed/Workshop', 'Summerhouse/Garden room', 'Greenhouse']
+    },
+    {
+      name: 'Parking',
+      icon: <CarFront />,
+      tags: ['Driveway', 'Garage', 'On-street', 'Allocated bay']
+    },
   ],
   scoreInfo: {
     score: 6,
-
-  }
+  },
+  keyOverviews: [
+    {
+      name: 'Condition rating',
+      icon: <Star width={25} height={24} />,
+      link: '#',
+      conditionRating: {
+        red: 2, amber: 4, green: 6
+      }
+    },
+    {
+      name: 'When to act',
+      icon: <Clock width={25} height={24} />,
+      link: '#',
+      whenToAct: {
+        intermediate: 4,
+        short: 5,
+        medium: 7,
+        long: 2
+      }
+    },
+    {
+      name: 'Structure',
+      icon: <House width={25} height={24} />,
+      summary: {
+        text: 'No movement noted. 1 Crack to monitor',
+        icon: <ThumbsUp width={36} height={36} />,
+        color: 'text-my-green'
+      }
+    },
+    {
+      name: 'Damp & Decay',
+      icon: <Droplets width={25} height={24} />,
+      summary: {
+        text: 'No movement noted. 1 Crack to monitor',
+        icon: <ThumbsUp width={36} height={36} />,
+        color: 'text-my-green'
+      }
+    },
+    {
+      name: 'Roof & Chimneys',
+      icon: <House width={25} height={24} />,
+      summary: {
+        text: 'No movement noted. 1 Crack to monitor',
+        icon: <TriangleAlert width={36} height={36} />,
+        color: 'text-my-red'
+      }
+    },
+    {
+      name: 'Safety matters',
+      icon: <Shield width={25} height={24} />,
+      summary: {
+        text: 'No movement noted. 1 Crack to monitor',
+        icon: <AlarmClock width={36} height={36} />,
+        color: 'text-my-amber'
+      }
+    },
+    {
+      name: 'Property status at the time',
+      icon: <House width={25} height={24} />,
+      summary: {
+        text: 'No movement noted. 1 Crack to monitor',
+      }
+    },
+    {
+      name: 'Scope of instruction & General limitations',
+      icon: <Info width={25} height={24} />,
+      summary: {
+        text: 'No movement noted. 1 Crack to monitor',
+      }
+    },
+  ]
 }
 
 export default function Home() {
@@ -24,11 +178,12 @@ export default function Home() {
     <AppLayout>
       <div className="col-span-full py-3 px-5 rounded-2xl bg-surface flex justify-between">
         <div className="font-semibold text-xl flex gap-3 items-center">
+          <MapPin width={24} />
           {data.addressAndDates.address}
         </div>
         <div className="flex gap-10">
           {data.addressAndDates.dates.map(date => (
-            <div className="grid gap-1">
+            <div className="grid gap-1" key={date.text}>
               <span className="text-xs">{date.text}</span>
               <span className="text-primary text-xl font-semibold">{date.date}</span>
             </div>
@@ -36,18 +191,36 @@ export default function Home() {
         </div>
       </div>
 
-      {data.propertyImageUrl && <img src={data.propertyImageUrl} alt="property" className="lg:col-span-6 lg:row-span-2" />}
+      <div className="lg:col-span-6 lg:row-span-2">
+        <Image src="/images/c48de55123334e5f3278a62129f5433987c40ce3.jpg" alt="property" width='600' height={0} className="rounded-2xl h-full object-cover" />
+      </div>
+
+      {data.propertyInfo.map(info => (
+        <AttrbuteCard {...info} key={info.name} />
+      ))}
 
       <div className="py-4 px-3 rounded-2xl bg-surface space-y-2.5 col-span-full">
         <ScoreSlider score={data.scoreInfo.score} />
         <div className="space-y-4 mt-12">
-          <h2 className="text-2xl font-semibold p-2">Your smart score is {data.scoreInfo.score}/10</h2>
+          <h2 className="text-2xl font-semibold p-2 flex items-center gap-3">
+            Your smart score is {data.scoreInfo.score}/10
+            <Info width={20} height={20} />
+          </h2>
           <p className="p-2 font-myriad">
             <b>Summary:</b> This report provides a comprehensive overview of the recent land assessment conducted in the Green Valley region. The survey highlights key findings regarding soil quality, vegetation health, and water resources, offering valuable insights for future development projects. The data collected indicates a diverse ecosystem with potential for sustainable growth, while also addressing environmental concerns that need to be managed carefully.
           </p>
         </div>
       </div>
 
+      <h2 className="col-span-full text-[32px] font-semibold">Key overview</h2>
+
+      {data.keyOverviews.map(keyOverview => (
+        <KeyOverviewCard name={keyOverview.name} icon={keyOverview.icon} link={keyOverview.link} key={keyOverview.name}>
+          {keyOverview.conditionRating && <ConditionRating {...keyOverview.conditionRating} />}
+          {keyOverview.whenToAct && <WhenToAct {...keyOverview.whenToAct} />}
+          {keyOverview.summary && <Summary {...keyOverview.summary} />}
+        </KeyOverviewCard>
+      ))}
     </AppLayout>
   );
 }

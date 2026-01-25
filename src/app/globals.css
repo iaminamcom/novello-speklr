@@ -12,6 +12,7 @@
   --my-red: #BE0101;
   --my-amber: #D47C2F;
   --my-green: #60B934;
+  --my-khaki: #8D8860;
 }
 
 @theme inline {
@@ -23,6 +24,7 @@
   --color-my-red: var(--my-red);
   --color-my-amber: var(--my-amber);
   --color-my-green: var(--my-green);
+  --color-my-khaki: var(--my-khaki);
 
   --font-sans: var(--font-open-sauce), ui-sans-serif, system-ui, sans-serif;
   --font-myriad: var(--font-myriad), ui-sans-serif, system-ui, sans-serif;
