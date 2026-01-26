@@ -1,4 +1,3 @@
-import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -17,7 +16,13 @@ export function KeyOverviewCard({ name, icon, link, children }: KeyOverviewCardP
                     <span className="text-primary">{icon}</span>
                     <span className="font-semibold text-xl">{name}</span>
                 </div>
-                {link && <Link href={link} title='see more'><ChevronRight /></Link>}
+                {link && (
+                    <Link href={link} title='see more'>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 12L10 8L6 4" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </Link>
+                )}
             </div>
             {children}
         </div>

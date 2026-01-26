@@ -1,8 +1,8 @@
 import { AttrbuteCard } from "@/components/AttrbuteCard";
+import { Icon } from "@/components/Icon";
 import { ConditionRating, KeyOverviewCard, Summary, WhenToAct } from "@/components/KeyOverviewCard";
 import AppLayout from "@/components/layout/AppLayout";
 import { ScoreSlider } from "@/components/ScoreSlider";
-import { AlarmClock, Bed, CalendarDays, CarFront, Clock, CookingPot, DoorClosed, DoorOpen, Droplets, Hospital, House, HousePlug, Info, Luggage, MapPin, Shield, Star, TentTree, ThumbsUp, Toilet, TriangleAlert, Utensils, Warehouse, WashingMachine } from "lucide-react";
 import Image from "next/image";
 
 const data = {
@@ -16,84 +16,84 @@ const data = {
   propertyInfo: [
     {
       name: 'Property type',
-      icon: <House />,
+      icon: <Icon id="feature-property-type" />,
       valueText: 'End-of-terrace house',
       smallText: true,
     },
     {
       name: 'Approximate age',
-      icon: <CalendarDays />,
+      icon: <Icon id="feature-approximate-age" />,
       valueText: '1800’s',
     },
     {
       name: 'Tenure',
-      icon: <HousePlug />,
+      icon: <Icon id="feature-tenure" />,
       valueText: 'Freehold',
       smallText: true,
     },
     {
       name: 'Bathrooms',
-      icon: <Toilet />,
+      icon: <Icon id="feature-bathrooms" />,
       valueText: '4',
     },
     {
       name: 'Living rooms',
-      icon: <Warehouse />,
+      icon: <Icon id="feature-living-rooms" />,
       valueText: '2',
     },
     {
       name: 'Bedrooms',
-      icon: <Bed />,
+      icon: <Icon id="feature-bedrooms" />,
       valueText: '5',
     },
     {
       name: 'Kitchens',
-      icon: <CookingPot />,
+      icon: <Icon id="feature-kitchens" />,
       valueText: '1',
     },
     {
       name: 'Dining rooms',
-      icon: <Utensils />,
+      icon: <Icon id="feature-dining-rooms" />,
       valueText: '2',
     },
     {
       name: 'En-suites',
-      icon: <Luggage />,
+      icon: <Icon id="feature-en-suite" />,
       valueText: '5',
     },
     {
       name: 'WCs',
-      icon: <Toilet />,
+      icon: <Icon id="feature-wcs" />,
       valueText: '4',
     },
     {
       name: 'Utility rooms',
-      icon: <WashingMachine />,
+      icon: <Icon id="feature-utility-room" />,
       valueText: '2',
     },
     {
       name: 'Conservatory',
-      icon: <DoorOpen />,
+      icon: <Icon id="feature-conservatory" />,
       valueText: '5',
     },
     {
       name: 'Other rooms',
-      icon: <DoorClosed />,
+      icon: <Icon id="feature-other-rooms" />,
       tags: ['Study', 'Snug', 'tag 3', 'tag 4']
     },
     {
       name: 'Outside areas',
-      icon: <TentTree />,
+      icon: <Icon id="feature-uutside-areas" />,
       tags: ['Garden', 'Balcony/Terrace', 'Patio/Courtyard', 'Shared outdoor space']
     },
     {
       name: 'Outbuildings',
-      icon: <Hospital />,
+      icon: <Icon id="feature-outbuildings" />,
       tags: ['Garage (detached)', 'Shed/Workshop', 'Summerhouse/Garden room', 'Greenhouse']
     },
     {
       name: 'Parking',
-      icon: <CarFront />,
+      icon: <Icon id="feature-parking" />,
       tags: ['Driveway', 'Garage', 'On-street', 'Allocated bay']
     },
   ],
@@ -103,7 +103,7 @@ const data = {
   keyOverviews: [
     {
       name: 'Condition rating',
-      icon: <Star width={25} height={24} />,
+      icon: <Icon id='star-filled' width={25} />,
       link: '#',
       conditionRating: {
         red: 2, amber: 4, green: 6
@@ -111,7 +111,7 @@ const data = {
     },
     {
       name: 'When to act',
-      icon: <Clock width={25} height={24} />,
+      icon: <Icon id='clock' width={25} />,
       link: '#',
       whenToAct: {
         intermediate: 4,
@@ -122,50 +122,50 @@ const data = {
     },
     {
       name: 'Structure',
-      icon: <House width={25} height={24} />,
+      icon: <Icon id='home' width={25} />,
       summary: {
         text: 'No movement noted. 1 Crack to monitor',
-        icon: <ThumbsUp width={36} height={36} />,
+        icon: <Icon id='thumb' height={36} width={36} />,
         color: 'text-my-green'
       }
     },
     {
       name: 'Damp & Decay',
-      icon: <Droplets width={25} height={24} />,
+      icon: <Icon id='drop' width={25} />,
       summary: {
         text: 'No movement noted. 1 Crack to monitor',
-        icon: <ThumbsUp width={36} height={36} />,
+        icon: <Icon id='thumb' height={36} width={36} />,
         color: 'text-my-green'
       }
     },
     {
       name: 'Roof & Chimneys',
-      icon: <House width={25} height={24} />,
+      icon: <Icon id='home' width={25} />,
       summary: {
         text: 'No movement noted. 1 Crack to monitor',
-        icon: <TriangleAlert width={36} height={36} />,
+        icon: <Icon id='alert' height={36} width={36} />,
         color: 'text-my-red'
       }
     },
     {
       name: 'Safety matters',
-      icon: <Shield width={25} height={24} />,
+      icon: <Icon id='shield' width={25} />,
       summary: {
         text: 'No movement noted. 1 Crack to monitor',
-        icon: <AlarmClock width={36} height={36} />,
+        icon: <Icon id='alram' height={36} width={36} />,
         color: 'text-my-amber'
       }
     },
     {
       name: 'Property status at the time',
-      icon: <House width={25} height={24} />,
+      icon: <Icon id='home' width={25} />,
       summary: {
         text: 'No movement noted. 1 Crack to monitor',
       }
     },
     {
       name: 'Scope of instruction & General limitations',
-      icon: <Info width={25} height={24} />,
+      icon: <Icon id='info-filled' width={25} />,
       summary: {
         text: 'No movement noted. 1 Crack to monitor',
       }
@@ -178,7 +178,7 @@ export default function Home() {
     <AppLayout>
       <div className="col-span-full py-3 px-5 rounded-2xl bg-surface flex justify-between">
         <div className="font-semibold text-xl flex gap-3 items-center">
-          <MapPin width={24} />
+          <Icon id='menu-map' width={24} />
           {data.addressAndDates.address}
         </div>
         <div className="flex gap-10">
@@ -204,7 +204,7 @@ export default function Home() {
         <div className="space-y-4 mt-12">
           <h2 className="text-2xl font-semibold p-2 flex items-center gap-3">
             Your smart score is {data.scoreInfo.score}/10
-            <Info width={20} height={20} />
+            <Icon width={20} height={20} id="info" />
           </h2>
           <p className="p-2 font-myriad">
             <b>Summary:</b> This report provides a comprehensive overview of the recent land assessment conducted in the Green Valley region. The survey highlights key findings regarding soil quality, vegetation health, and water resources, offering valuable insights for future development projects. The data collected indicates a diverse ecosystem with potential for sustainable growth, while also addressing environmental concerns that need to be managed carefully.
