@@ -15,10 +15,10 @@ export function ScoreSlider({ score }: { score: number }) {
 
             <div className="bg-linear-to-r from-my-red via-my-amber to-my-green relative h-2 rounded">
                 <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 size-6 rounded-full 
-                   bg-linear-to-r from-my-red via-my-amber to-my-green overflow-hidden shadow-2xl"
+                   bg-linear-to-r from-my-red via-my-amber to-my-green overflow-hidden shadow-2xl opacity-90"
                     style={{ left: `${score}0%`, backgroundPosition: `${score}0% 0%`, backgroundSize: '1000% 100%' }}
                 >
-                    <div className="backdrop-blur-[1px] size-full"></div>
+                    <div className="backdrop-blur-xl size-full bg-radial-[at_50%_25%] from-surface/50 via-90% to-transparent"></div>
                 </div>
             </div>
         </div>
