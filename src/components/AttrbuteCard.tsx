@@ -15,7 +15,7 @@ export function AttrbuteCard({ icon, tags, name, valueText, smallText = false }:
             <div className="flex flex-col items-center gap-3">
                 <span className="text-xs">{name}</span>
                 {valueText && (
-                    <span className={`font-semibold ${smallText ? 'text-sm' : 'text-2xl'}`}>{valueText}</span>
+                    <span className={`font-semibold ${smallText ? 'text-base' : 'text-2xl'}`}>{valueText}</span>
                 )}
                 {tags?.length && (
                     <div className="flex flex-wrap gap-1 justify-center">

@@ -1,7 +1,7 @@
 export function ScoreSlider({ score }: { score: number }) {
     return (
-        <div className="relative pt-20 px-2" aria-hidden>
-            <div className="bg-linear-to-r from-my-red via-my-amber to-my-green absolute top-0 left-0 text-[44px] font-bold -translate-x-1/2 transition-all duration-300 font-myriad"
+        <div className="relative pt-18 px-2" aria-hidden>
+            <div className="bg-linear-to-r from-my-red via-my-amber to-my-green absolute top-0 left-0 text-[44px] font-bold -translate-x-[calc(50%+3px)] transition-all duration-300 font-myriad"
                 style={{
                     left: `${score}0%`,
                     backgroundPosition: `${score}0% 0%`,

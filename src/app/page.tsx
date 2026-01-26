@@ -191,8 +191,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="lg:col-span-6 lg:row-span-2">
-        <Image src="/images/c48de55123334e5f3278a62129f5433987c40ce3.jpg" alt="property" width='600' height={0} className="rounded-2xl h-full object-cover" />
+      <div className="lg:col-span-6 lg:row-span-2 max-h-90.5">
+        <Image src="/images/c48de55123334e5f3278a62129f5433987c40ce3.jpg" alt="property" width='600' height={0} className="rounded-2xl size-full object-cover" />
       </div>
 
       {data.propertyInfo.map(info => (
