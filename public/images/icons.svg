@@ -242,4 +242,24 @@
         <path d="M9.35998 29.9998L12.24 25.4998M26.64 29.9998L23.76 25.4998M25.2 5.99976L29.52 10.4998M10.8 5.99976L6.47998 10.4998" stroke="#D47C2F" stroke-width="2.88" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
 
+    <symbol width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" id="jobs-person">
+        <path d="M12.6667 14V12.6667C12.6667 11.9594 12.3857 11.2811 11.8856 10.781C11.3855 10.281 10.7072 10 10 10H6C5.29275 10 4.61448 10.281 4.11438 10.781C3.61428 11.2811 3.33333 11.9594 3.33333 12.6667V14M10.6667 4.66667C10.6667 6.13943 9.47276 7.33333 8 7.33333C6.52724 7.33333 5.33333 6.13943 5.33333 4.66667C5.33333 3.19391 6.52724 2 8 2C9.47276 2 10.6667 3.19391 10.6667 4.66667Z" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" id="jobs-home">
+        <g clip-path="url(#clip0_190_90)">
+        <path d="M6 14.6667V8.00001H10V14.6667M2 6.00001L8 1.33334L14 6.00001V13.3333C14 13.687 13.8595 14.0261 13.6095 14.2762C13.3594 14.5262 13.0203 14.6667 12.6667 14.6667H3.33333C2.97971 14.6667 2.64057 14.5262 2.39052 14.2762C2.14048 14.0261 2 13.687 2 13.3333V6.00001Z" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_190_90">
+        <rect width="16" height="16" fill="white"/>
+        </clipPath>
+        </defs>
+    </symbol>
+
+    <symbol width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="jobs-arrow-right-top">
+        <path d="M7 7H17M17 7V17M17 7L7 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+
 </svg>
