@@ -191,13 +191,14 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="lg:col-span-6 lg:row-span-2 max-h-90.5">
-        <Image src="/images/c48de55123334e5f3278a62129f5433987c40ce3.jpg" alt="property" width='600' height={0} className="rounded-2xl size-full object-cover" />
+      <div className="grid lg:grid-cols-12 gap-2.5 gap-x-3 grid-rows-[180px_180px_auto] col-span-full">
+        <div className="lg:col-span-6 lg:row-span-2">
+          <Image src="/images/c48de55123334e5f3278a62129f5433987c40ce3.jpg" alt="property" width='600' height={0} className="rounded-2xl size-full object-cover" />
+        </div>
+        {data.propertyInfo.map(info => (
+          <AttrbuteCard {...info} key={info.name} />
+        ))}
       </div>
-
-      {data.propertyInfo.map(info => (
-        <AttrbuteCard {...info} key={info.name} />
-      ))}
 
       <div className="py-4 px-3 rounded-2xl bg-surface space-y-2.5 col-span-full">
         <ScoreSlider score={data.scoreInfo.score} />

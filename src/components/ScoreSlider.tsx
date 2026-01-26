@@ -18,7 +18,7 @@ export function ScoreSlider({ score }: { score: number }) {
                    bg-linear-to-r from-my-red via-my-amber to-my-green overflow-hidden shadow-2xl opacity-90"
                     style={{ left: `${score}0%`, backgroundPosition: `${score}0% 0%`, backgroundSize: '1000% 100%' }}
                 >
-                    <div className="backdrop-blur-xl size-full bg-radial-[at_50%_25%] from-surface/50 via-90% to-transparent"></div>
+                    <div className="backdrop-blur-xl size-full bg-radial-[at_50%_25%] from-surface/70 via-90% to-transparent"></div>
                 </div>
             </div>
         </div>

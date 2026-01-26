@@ -20,7 +20,7 @@ export function AttrbuteCard({ icon, tags, name, valueText, smallText = false }:
                 {tags?.length && (
                     <div className="flex flex-wrap gap-1 justify-center">
                         {tags.map(tag => (
-                            <span className="rounded-full py-1 px-2 bg-background text-primary text-sm font-semibold" key={tag}>{tag}</span>
+                            <span className="rounded-full py-1 px-2 bg-background text-primary text-[12px] 2xl:text-sm font-semibold" key={tag}>{tag}</span>
                         ))}
                     </div>
                 )}
