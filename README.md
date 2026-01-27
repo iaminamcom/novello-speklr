@@ -17,7 +17,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Theming Architecture
 
 I used mix of both **React Context + CSS Variables** approach and used localStorage with key `novello-theme` for storing data.
-I used NexJs font tool for theme fonts. It'll use variables. This approach is and clean.
+I used NexJs font tool for theme fonts with variables approach. This approach is efficient and clean.
 
 ### Theme files
 
