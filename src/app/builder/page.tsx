@@ -7,11 +7,9 @@ import { Icon } from '@/components/Icon';
 
 const fontOptions = [
   { value: 'OpenSauce', label: 'Open Sauce (Default)' },
-  { value: 'Inter', label: 'Inter' },
   { value: 'Roboto', label: 'Roboto' },
-  { value: 'Playfair Display', label: 'Playfair Display' },
-  { value: 'Poppins', label: 'Poppins' },
-  { value: 'Montserrat', label: 'Montserrat' },
+  { value: 'Inter', label: 'Inter' },
+  { value: 'Playfair', label: 'Playfair Display' },
 ];
 
 function BuilderForm() {
