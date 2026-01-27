@@ -1,13 +1,16 @@
+'use client';
+
 import Image from "next/image";
 import { Icon } from "../Icon";
+import { useTheme, defaultTheme } from "@/context/ThemeContext";
 
 type MenuItem = {
   name: string;
-  iconId: string,
+  iconId: string;
   url?: string;
   active: boolean;
-  children?: MenuItem[]
-}
+  children?: MenuItem[];
+};
 
 const menuData: MenuItem[] = [
   {
@@ -46,14 +49,32 @@ const menuData: MenuItem[] = [
     url: '#',
     active: false
   },
-]
+];
 
-export default function Sidebar() {
+interface SidebarProps {
+  themed?: boolean;
+}
+
+export default function Sidebar({ themed = false }: SidebarProps) {
+  const themeContext = themed ? useTheme() : null;
+  const theme = themeContext?.theme ?? defaultTheme;
+
+  const surveyorName = theme.surveyorName;
+  const isCustomLogo = themed && theme.logo && theme.logo !== defaultTheme.logo;
+
   return (
     <aside className="bg-surface p-5 rounded-[20px] max-w-100 space-y-7 w-full">
       <div className="space-y-10">
-        <div className="rounded-xl bg-surface-elevated py-3 px-5 grid place-content-center">
-          <Image src='/images/novello-logo.svg' width={220} height={60} alt="logo" />
+        <div className="rounded-xl bg-surface-elevated py-3 px-5 grid place-content-center min-h-21">
+          {isCustomLogo ? (
+            <img
+              src={theme.logo}
+              alt="logo"
+              className="max-w-55 max-h-15 object-contain"
+            />
+          ) : (
+            <Image src='/images/novello-logo.svg' width={220} height={60} alt="logo" />
+          )}
         </div>
         <nav>
           <ul className="space-y-1">
@@ -64,7 +85,10 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      <a href="" className="py-3 px-7 bg-primary rounded-full flex items-center justify-center gap-2.5 text-surface font-semibold hover:bg-primary/80">
+      <a
+        href=""
+        className="py-3 px-7 bg-primary rounded-full flex items-center justify-center gap-2.5 text-surface font-semibold hover:opacity-80 transition-opacity"
+      >
         <Icon id='download' />
         Download Report
       </a>
@@ -74,7 +98,7 @@ export default function Sidebar() {
           <Image src='/images/james.png' alt="Surveyor" className="rounded-full" width={68} height={68} />
           <div className="grid gap-0.5">
             <span className="text-primary">Surveyor</span>
-            <span className="font-semibold text-2xl">James Brook</span>
+            <span className="font-semibold text-2xl">{surveyorName}</span>
           </div>
         </div>
         <div className="flex flex-col items-center gap-4">
@@ -84,7 +108,7 @@ export default function Sidebar() {
           </a>
           <a href="" className="flex gap-2 items-center">
             <Icon id="email" />
-            james@novello.com
+            {themed ? 'contact@novello.com' : 'james@novello.com'}
           </a>
         </div>
       </div>
@@ -99,7 +123,7 @@ export default function Sidebar() {
 
 function NavItem({ item }: { item: MenuItem }) {
   const styleClasses = `rounded py-4 px-5 flex items-center justify-between cursor-pointer font-semibold w-full
-                        hover:bg-surface-elevated ${item.active ? 'bg-surface-elevated' : ''}`
+                        hover:bg-surface-elevated ${item.active ? 'bg-surface-elevated' : ''}`;
 
   if (item.children) {
     return (
@@ -114,7 +138,7 @@ function NavItem({ item }: { item: MenuItem }) {
           </svg>
         </button>
       </div>
-    )
+    );
   }
 
   return (
@@ -124,5 +148,5 @@ function NavItem({ item }: { item: MenuItem }) {
         {item.name}
       </div>
     </a>
-  )
+  );
 }
