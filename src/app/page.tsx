@@ -4,6 +4,7 @@ import { ConditionRating, KeyOverviewCard, Summary, WhenToAct } from "@/componen
 import AppLayout from "@/components/layout/AppLayout";
 import { ScoreSlider } from "@/components/ScoreSlider";
 import Image from "next/image";
+import Link from "next/link";
 
 const data = {
   addressAndDates: {
@@ -176,6 +177,16 @@ const data = {
 export default function Home() {
   return (
     <AppLayout>
+      {/* Create My Site CTA */}
+      <div className="col-span-full pb-4 flex justify-end">
+        <Link
+          href="/builder"
+          className="py-2 px-4 bg-primary rounded-full text-center text-surface font-semibold text-lg hover:opacity-90 transition-opacity"
+        >
+          Create My Site
+        </Link>
+      </div>
+
       <div className="col-span-full py-3 px-5 rounded-2xl bg-surface flex justify-between">
         <div className="font-semibold text-xl flex gap-3 items-center">
           <Icon id='menu-map' width={24} />
