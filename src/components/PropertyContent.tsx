@@ -175,7 +175,7 @@ const data = {
 export default function PropertyContent() {
   return (
     <>
-      <div className="col-span-full py-3 px-5 rounded-2xl bg-surface flex justify-between">
+      <div className="col-span-full py-3 px-5 rounded-2xl bg-surface flex justify-between flex-wrap gap-5">
         <div className="font-semibold text-xl flex gap-3 items-center">
           <Icon id='menu-map' width={24} />
           {data.addressAndDates.address}
@@ -190,8 +190,8 @@ export default function PropertyContent() {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-12 gap-2.5 gap-x-3 grid-rows-[180px_180px_auto] col-span-full">
-        <div className="lg:col-span-6 lg:row-span-2">
+      <div className="grid grid-cols-2 lg:grid-cols-12 gap-2.5 gap-x-3 grid-rows-[180px_180px_auto] col-span-full">
+        <div className="col-span-full lg:col-span-6 lg:row-span-2">
           <Image src="/images/c48de55123334e5f3278a62129f5433987c40ce3.jpg" alt="property" width='600' height={0} className="rounded-2xl size-full object-cover" />
         </div>
         {data.propertyInfo.map(info => (

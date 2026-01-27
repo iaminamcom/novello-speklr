@@ -37,7 +37,7 @@ function PreviewContent() {
   return (
     <AppLayout themed className={fontClass}>
       <div className="col-span-full">
-        <div className="bg-primary/10 border border-primary/30 rounded-xl py-3 px-5 flex items-center justify-between">
+        <div className="bg-primary/10 border border-primary/30 rounded-xl py-3 px-5 flex items-center justify-between flex-wrap gap-4">
           <div className="flex items-center gap-3">
             <Icon id="info-filled" width={24} className="text-primary" />
             <span>
