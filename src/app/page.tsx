@@ -177,11 +177,10 @@ const data = {
 export default function Home() {
   return (
     <AppLayout>
-      {/* Create My Site CTA */}
       <div className="col-span-full pb-4 flex justify-end">
         <Link
           href="/builder"
-          className="py-2 px-4 bg-primary rounded-full text-center text-surface font-semibold text-lg hover:opacity-90 transition-opacity"
+          className="py-2 px-4 bg-primary rounded-full text-center text-surface font-semibold text-sm hover:opacity-90 transition-opacity"
         >
           Create My Site
         </Link>
