@@ -2,8 +2,21 @@
 
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { z } from 'zod';
 import { ThemeProvider, useTheme, defaultTheme, ThemeConfig } from '@/context/ThemeContext';
 import { Icon } from '@/components/Icon';
+
+const hexColorRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+
+const themeSchema = z.object({
+  logo: z.string().min(1, 'Logo is required'),
+  primaryColor: z.string().regex(hexColorRegex, 'Must be a valid hex color (e.g., #7ED6C2)'),
+  secondaryColor: z.string().regex(hexColorRegex, 'Must be a valid hex color (e.g., #2A383D)'),
+  fontFamily: z.string().min(1, 'Font family is required'),
+  surveyorName: z.string().min(2, 'Surveyor name must be at least 2 characters'),
+});
+
+type FormErrors = Partial<Record<keyof ThemeConfig, string>>;
 
 const fontOptions = [
   { value: 'OpenSauce', label: 'Open Sauce (Default)' },
@@ -23,6 +36,7 @@ function BuilderForm() {
   });
 
   const [logoPreview, setLogoPreview] = useState<string>(formData.logo);
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -44,7 +58,23 @@ function BuilderForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setTheme(formData);
+    setErrors({});
+
+    const result = themeSchema.safeParse(formData);
+
+    if (!result.success) {
+      const fieldErrors: FormErrors = {};
+      for (const issue of result.error.issues) {
+        const field = issue.path[0] as keyof ThemeConfig;
+        if (!fieldErrors[field]) {
+          fieldErrors[field] = issue.message;
+        }
+      }
+      setErrors(fieldErrors);
+      return;
+    }
+
+    setTheme(result.data);
     router.push('/builder/preview');
   };
 
@@ -100,8 +130,9 @@ function BuilderForm() {
                     type="url"
                     placeholder="https://example.com/logo.png"
                     onChange={(e) => handleLogoUrl(e.target.value)}
-                    className="w-full py-3 px-4 bg-surface-elevated rounded-xl border border-white/10 focus:border-primary outline-none transition-colors"
+                    className={`w-full py-3 px-4 bg-surface-elevated rounded-xl border outline-none transition-colors ${errors.logo ? 'border-red-500' : 'border-white/10 focus:border-primary'}`}
                   />
+                  {errors.logo && <p className="text-red-500 text-sm mt-1">{errors.logo}</p>}
                 </div>
               </div>
 
@@ -135,10 +166,14 @@ function BuilderForm() {
                     type="text"
                     value={formData.primaryColor}
                     onChange={(e) => setFormData(prev => ({ ...prev, primaryColor: e.target.value }))}
-                    className="flex-1 py-3 px-4 bg-surface-elevated rounded-xl border border-white/10 focus:border-primary outline-none transition-colors font-mono"
+                    className={`flex-1 py-3 px-4 bg-surface-elevated rounded-xl border outline-none transition-colors font-mono ${errors.primaryColor ? 'border-red-500' : 'border-white/10 focus:border-primary'}`}
                   />
                 </div>
-                <p className="text-xs text-white/40">Used for buttons, links, and accents</p>
+                {errors.primaryColor ? (
+                  <p className="text-red-500 text-sm">{errors.primaryColor}</p>
+                ) : (
+                  <p className="text-xs text-white/40">Used for buttons, links, and accents</p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -154,10 +189,14 @@ function BuilderForm() {
                     type="text"
                     value={formData.secondaryColor}
                     onChange={(e) => setFormData(prev => ({ ...prev, secondaryColor: e.target.value }))}
-                    className="flex-1 py-3 px-4 bg-surface-elevated rounded-xl border border-white/10 focus:border-primary outline-none transition-colors font-mono"
+                    className={`flex-1 py-3 px-4 bg-surface-elevated rounded-xl border outline-none transition-colors font-mono ${errors.secondaryColor ? 'border-red-500' : 'border-white/10 focus:border-primary'}`}
                   />
                 </div>
-                <p className="text-xs text-white/40">Used for elevated surfaces and backgrounds</p>
+                {errors.secondaryColor ? (
+                  <p className="text-red-500 text-sm">{errors.secondaryColor}</p>
+                ) : (
+                  <p className="text-xs text-white/40">Used for elevated surfaces and backgrounds</p>
+                )}
               </div>
             </div>
 
@@ -204,8 +243,9 @@ function BuilderForm() {
                 value={formData.surveyorName}
                 onChange={(e) => setFormData(prev => ({ ...prev, surveyorName: e.target.value }))}
                 placeholder="James Brook"
-                className="w-full py-3 px-4 bg-surface-elevated rounded-xl border border-white/10 focus:border-primary outline-none transition-colors"
+                className={`w-full py-3 px-4 bg-surface-elevated rounded-xl border outline-none transition-colors ${errors.surveyorName ? 'border-red-500' : 'border-white/10 focus:border-primary'}`}
               />
+              {errors.surveyorName && <p className="text-red-500 text-sm mt-1">{errors.surveyorName}</p>}
             </div>
           </section>
 
